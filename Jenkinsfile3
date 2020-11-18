@@ -1,35 +1,40 @@
 pipeline {
-    agent none
-    stages {
-        stage('Run Tests') {
-            parallel {
-                stage('Test On Windows') {
-                    agent {
-                        label "windows"
-                    }
-                    steps {
-                        bat "run-tests.bat"
-                    }
-                    post {
-                        always {
-                            junit "**/TEST-*.xml"
-                        }
-                    }
-                }
-                stage('Test On Linux') {
-                    agent {
-                        label "linux"
-                    }
-                    steps {
-                        sh "run-tests.sh"
-                    }
-                    post {
-                        always {
-                            junit "**/TEST-*.xml"
-                        }
-                    }
-                }
-            }
-        }
-    }
+   agent any
+   stages {
+       stage('before') {
+           steps {
+               echo "stage: before"
+           }
+       }
+       stage('para') {
+           parallel {
+               stage('apple') {
+                   steps {
+                       echo "stage: apple 1 "
+                       sleep(20 * Math.random())
+                       echo "stage: apple 2"
+                   }
+               }
+               stage('banana') {
+                   steps {
+                       echo "stage: banana 1"
+                       sleep(20 * Math.random())
+                       echo "banana 2"
+                   }
+               }
+               stage('peach') {
+                   steps {
+                       echo "stage: peach 1"
+                       sleep(20 * Math.random())
+                       echo "stage: peach 2"
+                   }
+               }
+           }
+       }
+       stage('after') {
+           steps {
+               echo "stage: after"
+           }
+       }
+   }
 }
