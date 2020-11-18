@@ -11,21 +11,21 @@ pipeline {
                stage('apple') {
                    steps {
                        echo "stage: apple 1 "
-                       sleep(20 * Math.random())
+                       sleep 5
                        echo "stage: apple 2"
                    }
                }
                stage('banana') {
                    steps {
                        echo "stage: banana 1"
-                       sleep(20 * Math.random())
+                       sleep 2
                        echo "banana 2"
                    }
                }
                stage('peach') {
                    steps {
                        echo "stage: peach 1"
-                       sleep(20 * Math.random())
+                       sleep 5
                        echo "stage: peach 2"
                    }
                }
