@@ -1,0 +1,15 @@
+pipeline {
+  agent any
+  stages {
+    stage('Before') {
+      echo "Stage: before"
+    }
+    stage('Para') {
+      echo "Stage: para"
+    }
+    stage('After') {
+      echo "Stage: after"
+    }
+  
+  }
+}
