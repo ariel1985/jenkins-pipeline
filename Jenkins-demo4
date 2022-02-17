@@ -10,17 +10,25 @@ pipeline {
       parallel {
         stage('Apple') {
           steps {
-            echo 'Stage: apple'
+            echo 'Stage: apple 1'
+            sleep 5
+            echo 'Stage: apple 2'
+            
           }
         }
         stage('Banana') {
           steps {
-            echo "Stage: banana"
+            echo "Stage: banana 1"
+            sleep 4
+            echo "Stage: banana 2"
+            
           }
         }
         stage('Peach') {
           steps {
-            echo "Stage: peach"
+            echo "Stage: peach 1"
+            sleep 6
+            echo "Stage: peach 2"
           }
         }
       }
